@@ -22,7 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TimeZone;
@@ -270,7 +269,6 @@ public class L1UltimateBattle {
 				}
 
 				for (L1PcInstance pc : getMembersArray()) {
-					new Random();
 					int rndx = ThreadLocalRandom.current().nextInt(4);
 					int rndy = ThreadLocalRandom.current().nextInt(4);
 					int locx = 33503 + rndx;
@@ -290,7 +288,6 @@ public class L1UltimateBattle {
 
 	public void start() {
 		int patternsMax = UBSpawnTable.getInstance().getMaxPattern(_ubId);
-		new Random();
 		_pattern = ThreadLocalRandom.current().nextInt(patternsMax) + 1;
 
 		UbThread ub = new UbThread();

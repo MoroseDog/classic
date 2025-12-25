@@ -21,7 +21,6 @@ package l1j.server.server.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
@@ -69,7 +68,6 @@ public class L1Spawn {
 	private HashMap<Integer, Point> _homePoint = null; // init spawn of
 														// individual objects in
 														// the home points
-	private static Random _random = new Random();
 	private String _name;
 	private int _spawnHome;
 	private int _spawnHomeRange;
@@ -398,8 +396,7 @@ public class L1Spawn {
 							}
 						}
 						if (players.size() > 0) {
-							L1PcInstance pc = players.get(_random
-									.nextInt(players.size()));
+							L1PcInstance pc = players.get(ThreadLocalRandom.current().nextInt(players.size()));
 							L1Location loc = pc.getLocation().randomLocation(
 									PC_AROUND_DISTANCE, false);
 							newlocx = loc.getX();

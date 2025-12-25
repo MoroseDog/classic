@@ -24,7 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,7 +45,6 @@ import l1j.server.server.utils.PerformanceTimer;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class L1BossCycle {
 	private static Logger _log = LoggerFactory.getLogger(L1BossCycle.class.getName());
-	private static final Random _rnd = new Random();
 	private Calendar _baseDate;
 	private int _period; // Portion Exchange
 	private int _periodDay;
@@ -254,7 +253,7 @@ public class L1BossCycle {
 		// Appearance time decision until the start ~ end of the second set at
 		// random
 		int diff = (_endTime - _startTime) * 60;
-		int random = diff > 0 ? _rnd.nextInt(diff) : 0;
+		int random = diff > 0 ? ThreadLocalRandom.current().nextInt(diff) : 0;
 		base.add(Calendar.SECOND, random);
 		return base;
 	}

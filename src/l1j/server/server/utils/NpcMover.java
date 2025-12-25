@@ -18,7 +18,7 @@
  */
 package l1j.server.server.utils;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,8 +57,7 @@ public class NpcMover {
 				return;
 			}
 			
-			Random rand = new Random();
-			int [] newLoc = movableLocations[rand.nextInt(movableLocations.length)];
+			int [] newLoc = movableLocations[ThreadLocalRandom.current().nextInt(movableLocations.length)];
 			npcInstance.setLocation(newLoc[0], newLoc[1], newLoc[2]);
 			
 			// update the location for anyone on screen

@@ -35,7 +35,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -1816,7 +1815,6 @@ public class L1NpcInstance extends L1Character {
 			return;
 		}
 
-		new Random();
 		if (ThreadLocalRandom.current().nextInt(100) > chance) {
 			return;
 		}

@@ -19,7 +19,6 @@
 package l1j.server.server.model;
 
 import java.text.DecimalFormat;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
@@ -644,7 +643,6 @@ public class L1PcInventory extends L1Inventory {
 	}
 
 	public L1ItemInstance CaoPenalty() {
-		new Random();
 		int rnd = ThreadLocalRandom.current().nextInt(_items.size());
 		L1ItemInstance penaltyItem = _items.get(rnd);
 		if (penaltyItem.getItem().getItemId() == L1ItemId.ADENA

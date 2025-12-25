@@ -18,13 +18,11 @@
  */
 package l1j.server.server.utils;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import l1j.server.Config;
 
 public class CalcStat {
-
-	private static Random rnd = new Random();
 
 	private CalcStat() {
 
@@ -108,43 +106,43 @@ public class CalcStat {
 			randomhp = (short) (baseCon - 15);
 		}
 		if (charType == 0) { // Prince
-			randomhp += (short) (11 + rnd.nextInt(2));
+			randomhp += (short) (11 + ThreadLocalRandom.current().nextInt(2));
 
 			if (baseMaxHp + randomhp > Config.PRINCE_MAX_HP) {
 				randomhp = (short) (Config.PRINCE_MAX_HP - baseMaxHp);
 			}
 		} else if (charType == 1) { // Knight
-			randomhp += (short) (17 + rnd.nextInt(2));
+			randomhp += (short) (17 + ThreadLocalRandom.current().nextInt(2));
 
 			if (baseMaxHp + randomhp > Config.KNIGHT_MAX_HP) {
 				randomhp = (short) (Config.KNIGHT_MAX_HP - baseMaxHp);
 			}
 		} else if (charType == 2) { // Elf
-			randomhp += (short) (10 + rnd.nextInt(2));
+			randomhp += (short) (10 + ThreadLocalRandom.current().nextInt(2));
 
 			if (baseMaxHp + randomhp > Config.ELF_MAX_HP) {
 				randomhp = (short) (Config.ELF_MAX_HP - baseMaxHp);
 			}
 		} else if (charType == 3) { // Wizard
-			randomhp += (short) (7 + rnd.nextInt(2));
+			randomhp += (short) (7 + ThreadLocalRandom.current().nextInt(2));
 
 			if (baseMaxHp + randomhp > Config.WIZARD_MAX_HP) {
 				randomhp = (short) (Config.WIZARD_MAX_HP - baseMaxHp);
 			}
 		} else if (charType == 4) { // Dark Elf
-			randomhp += (short) (10 + rnd.nextInt(2));
+			randomhp += (short) (10 + ThreadLocalRandom.current().nextInt(2));
 
 			if (baseMaxHp + randomhp > Config.DARKELF_MAX_HP) {
 				randomhp = (short) (Config.DARKELF_MAX_HP - baseMaxHp);
 			}
 		} else if (charType == 5) { // Dragon Knight
-			randomhp += (short) (13 + rnd.nextInt(2)); // l
+			randomhp += (short) (13 + ThreadLocalRandom.current().nextInt(2)); // l
 
 			if (baseMaxHp + randomhp > Config.DRAGONKNIGHT_MAX_HP) {
 				randomhp = (short) (Config.DRAGONKNIGHT_MAX_HP - baseMaxHp);
 			}
 		} else if (charType == 6) { // Illusionist
-			randomhp += (short) (9 + rnd.nextInt(2)); // l
+			randomhp += (short) (9 + ThreadLocalRandom.current().nextInt(2)); // l
 
 			if (baseMaxHp + randomhp > Config.ILLUSIONIST_MAX_HP) {
 				randomhp = (short) (Config.ILLUSIONIST_MAX_HP - baseMaxHp);
@@ -201,7 +199,7 @@ public class CalcStat {
 			seedZ = 6;
 		}
 
-		randommp = rnd.nextInt(seedY) + 1 + seedZ;
+		randommp = ThreadLocalRandom.current().nextInt(seedY) + 1 + seedZ;
 
 		if (charType == 0) { // Prince
 			if (baseMaxMp + randommp > Config.PRINCE_MAX_MP) {

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -167,7 +166,6 @@ public class L1Inventory extends L1Object {
 		int chargeCount = item.getItem().getMaxChargeCount();
 		if (itemId == 40006 || itemId == 40007 || itemId == 40008
 				|| itemId == 140006 || itemId == 140008 || itemId == 41401) {
-			new Random();
 			chargeCount -= ThreadLocalRandom.current().nextInt(5);
 		}
 		if (itemId == 20383) {

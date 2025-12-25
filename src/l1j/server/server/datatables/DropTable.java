@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
@@ -231,7 +230,6 @@ public class DropTable {
 		L1Inventory targetInventory = null;
 		L1PcInstance player;
 		L1PcInstance[] partyMember;
-		new Random();
 		int randomInt;
 		int chanceHate;
 		int itemId;

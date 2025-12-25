@@ -18,7 +18,7 @@
  */
 package l1j.server.server.utils;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * <p>
@@ -32,7 +32,6 @@ import java.util.Random;
  * </p>
  */
 public final class IntRange {
-	private static final Random _rnd = new Random();
 	private int _low;
 	private int _high;
 
@@ -87,7 +86,7 @@ public final class IntRange {
 	 * @return Random value range
 	 */
 	public int randomValue() {
-		return _rnd.nextInt(getWidth() + 1) + _low;
+		return ThreadLocalRandom.current().nextInt(getWidth() + 1) + _low;
 	}
 
 	public int getLow() {

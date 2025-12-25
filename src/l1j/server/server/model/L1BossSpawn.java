@@ -19,7 +19,7 @@
 package l1j.server.server.model;
 
 import java.util.Calendar;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +35,6 @@ public class L1BossSpawn extends L1Spawn {
 	private L1BossCycle _cycle;
 	private int _spawnCount;
 	private Calendar _activeSpawnTime;
-	private static Random _rnd = new Random();
 	private int _spawnNumber;
 	private int _objectId;
 
@@ -122,7 +121,7 @@ public class L1BossSpawn extends L1Spawn {
 		Calendar now = Calendar.getInstance();
 		// Appearance time
 		Calendar spawnTime;
-		if (Config.INIT_BOSS_SPAWN && _percentage > _rnd.nextInt(100)) {
+		if (Config.INIT_BOSS_SPAWN && _percentage > ThreadLocalRandom.current().nextInt(100)) {
 			spawnTime = _cycle.calcSpawnTime(now);
 
 		} else {
@@ -135,7 +134,7 @@ public class L1BossSpawn extends L1Spawn {
 	private Calendar calcNextSpawnTime(Calendar cal) {
 		do {
 			cal = _cycle.nextSpawnTime(cal);
-		} while (!(_percentage > _rnd.nextInt(100)));
+		} while (!(_percentage > ThreadLocalRandom.current().nextInt(100)));
 		return cal;
 	}
 
@@ -145,7 +144,7 @@ public class L1BossSpawn extends L1Spawn {
 		_activeSpawnTime = spawnTime;
 		long delay = spawnTime.getTimeInMillis() - System.currentTimeMillis();
 		if (Config.RANDOMIZE_BOSS_SPAWNS) {
-			double adjustment = _rnd.nextGaussian();
+			double adjustment = ThreadLocalRandom.current().nextGaussian();
 			// Bound the possible values to keep the boss spawns reasonable.
 			if (adjustment > 2.5)
 				adjustment = 2.5;

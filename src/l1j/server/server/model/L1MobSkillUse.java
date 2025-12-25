@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +58,6 @@ public class L1MobSkillUse {
 
 	private L1Character _target = null;
 
-	private Random _rnd = new Random();
 	private int _sleepTime = 0;
 	private int _skillUseCount[];
 
@@ -172,7 +171,7 @@ public class L1MobSkillUse {
 			return false;
 		}
 
-		int count = _rnd.nextInt(max) + min;
+		int count = ThreadLocalRandom.current().nextInt(max) + min;
 		this._attacker.addServantSummon(count);
 		mobspawn(summonId, count);
 
@@ -407,7 +406,7 @@ public class L1MobSkillUse {
 		boolean usable = false;
 
 		if (getMobSkillTemplate().getTriggerRandom(skillIdx) > 0) {
-			int chance = _rnd.nextInt(100) + 1;
+			int chance = ThreadLocalRandom.current().nextInt(100) + 1;
 			if (chance < getMobSkillTemplate().getTriggerRandom(skillIdx)) {
 				usable = true;
 			} else {
@@ -512,7 +511,7 @@ public class L1MobSkillUse {
 					mob.setId(IdFactory.getInstance().nextId());
 					L1Location loc = _attacker.getLocation().randomLocation(8,
 							false);
-					int heading = _rnd.nextInt(8);
+					int heading = ThreadLocalRandom.current().nextInt(8);
 					mob.setX(loc.getX());
 					mob.setY(loc.getY());
 					mob.setHomeX(loc.getX());
@@ -598,7 +597,7 @@ public class L1MobSkillUse {
 				target = _target;
 			} else {
 				int randomSize = targetList.size() * 100;
-				int targetIndex = _rnd.nextInt(randomSize) / 100;
+				int targetIndex = ThreadLocalRandom.current().nextInt(randomSize) / 100;
 				target = targetList.get(targetIndex);
 			}
 			break;

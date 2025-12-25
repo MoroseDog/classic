@@ -22,7 +22,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -189,7 +188,6 @@ public class L1TreasureBox {
 			}
 
 		} else if (getType().equals(TYPE.RANDOM)) {
-			new Random();
 			int chance = 0;
 			int r = ThreadLocalRandom.current().nextInt(getTotalChance());
 

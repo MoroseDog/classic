@@ -82,7 +82,6 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_WEAKNESS_EXPOSURE_L
 import static l1j.server.server.model.skill.L1SkillId.UNCANNY_DODGE;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import l1j.server.Config;
@@ -123,7 +122,6 @@ public class L1Attack {
 	private int _targetX;
 	private int _targetY;
 	private int _statusDamage = 0;
-	private static final Random _random = new Random();
 	private int _hitRate = 0;
 	private int _calcType;
 	private static final int PC_PC = 1;
@@ -669,8 +667,7 @@ public class L1Attack {
 		attackerDice += getSkillAdjustment(target);
 		int targetAc = target.getAc();
 		int defenderValue = targetAc * -1;
-		int defenderDice = targetAc >= 0 ? 10 - targetAc : 10 + _random
-				.nextInt(defenderValue) + 1;
+		int defenderDice = targetAc >= 0 ? 10 - targetAc : 10 + ThreadLocalRandom.current().nextInt(defenderValue) + 1;
 
 		int fumble = hitRate;
 		int critical = hitRate + 19;
