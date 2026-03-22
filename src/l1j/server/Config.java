@@ -219,6 +219,8 @@ public final class Config {
 
 	public static double RATE_XP;
 
+	public static double RATE_XP52;
+
 	public static double RATE_LA;
 	
 	public static double RATE_CHAO_LA;
@@ -249,6 +251,8 @@ public final class Config {
 	public static double RATE_KARMA_ORG;
 
 	public static double RATE_XP_ORG;
+
+	public static double RATE_XP52_ORG;	
 
 	public static double RATE_DROP_ADENA_ORG;
 
@@ -809,6 +813,8 @@ public final class Config {
 					"PartyExp", "1.0"));
 			RATE_XP = Double.parseDouble(rateSettings.getProperty("RateXp",
 					"1.0"));
+			RATE_XP52 = Double.parseDouble(rateSettings.getProperty("RateXp52",
+					"1.0"));
 			RATE_LA = Double.parseDouble(rateSettings.getProperty("RateLawful",
 					"1.0"));
 			RATE_CHAO_LA = Double.parseDouble(rateSettings.getProperty("RateChaoLawful",
@@ -852,6 +858,7 @@ public final class Config {
 			RATE_LA_ORG = RATE_LA;
 			RATE_KARMA_ORG = RATE_KARMA;
 			RATE_XP_ORG = RATE_XP;
+			RATE_XP52_ORG = RATE_XP52;
 			RATE_DROP_ADENA_ORG = RATE_DROP_ADENA;
 			RATE_DROP_ITEMS_ORG = RATE_DROP_ITEMS;
 			RATE_WEIGHT_LIMIT_ORG = RATE_WEIGHT_LIMIT;
@@ -1302,6 +1309,8 @@ public final class Config {
 			PARTYEXP_RATE = Double.parseDouble(pValue);
 		} else if (pName.equalsIgnoreCase("RateXp")) {
 			RATE_XP = Double.parseDouble(pValue);
+		} else if (pName.equalsIgnoreCase("RateXp52")) {
+			RATE_XP52 = Double.parseDouble(pValue);
 		} else if (pName.equalsIgnoreCase("RateLawful")) {
 			RATE_LA = Double.parseDouble(pValue);
 		} else if (pName.equalsIgnoreCase("RateKarma")) {
@@ -1533,6 +1542,7 @@ public final class Config {
 		_log.info("Reloading rates config.");
 		try {
 			RATE_XP = RATE_XP_ORG;
+			RATE_XP52 = RATE_XP52_ORG;
 			RATE_DROP_ADENA = RATE_DROP_ADENA_ORG;
 			RATE_DROP_ITEMS = RATE_DROP_ITEMS_ORG;
 			RATE_LA = RATE_LA_ORG;

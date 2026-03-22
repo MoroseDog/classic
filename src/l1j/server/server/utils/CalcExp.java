@@ -551,7 +551,11 @@ public class CalcExp {
 		if (pc.getLocation().getMapId() == 303) {
 			diPenalty = 0.5;
 		}
-		int add_exp = (int) (exp * exppenalty * Config.RATE_XP * foodBonus * diPenalty);
+
+		// Use the appropriate XP rate for the player's level
+		double xpRate = pc.getLevel() < 52 ? Config.RATE_XP52 : Config.RATE_XP;
+	
+		int add_exp = (int) (exp * exppenalty * xpRate * foodBonus * diPenalty);
 
 		pc.addExp(add_exp);
 	}

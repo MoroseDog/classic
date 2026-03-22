@@ -51,6 +51,10 @@ public class L1Rates implements L1CommandExecutor {
 					Config.setParameterValue("RateXp", ""
 							+ (Config.RATE_XP_ORG * data));
 					changed = "XP";
+				} else if (param.equalsIgnoreCase("XP52")) {
+					Config.setParameterValue("RateXp52", ""
+							+ (Config.RATE_XP52_ORG * data));
+					changed = "XP52";
 				} else if (param.equalsIgnoreCase("ADENA")) {
 					Config.setParameterValue("RateDropAdena", ""
 							+ (Config.RATE_DROP_ADENA_ORG * data));
@@ -89,9 +93,11 @@ public class L1Rates implements L1CommandExecutor {
 					changed = "ALL";
 				} else {
 					pc.sendPackets(new S_SystemMessage(
-							".rates ([XP,ADENA,DROP,LAW,KARMA,WEIGHT,ALL] VALUE) | RESET"));
+							".rates ([XP,XP52,ADENA,DROP,LAW,KARMA,WEIGHT,ALL] VALUE) | RESET"));
 					pc.sendPackets(new S_SystemMessage("XP: "
 							+ (int) Config.RATE_XP));
+					pc.sendPackets(new S_SystemMessage("XP52: "
+							+ (int) Config.RATE_XP52));
 					pc.sendPackets(new S_SystemMessage("ADENA: "
 							+ (int) Config.RATE_DROP_ADENA));
 					pc.sendPackets(new S_SystemMessage("DROP: "
@@ -106,8 +112,9 @@ public class L1Rates implements L1CommandExecutor {
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(
-					".rates ([XP,ADENA,DROP,LAW,KARMA,WEIGHT,ALL] VALUE) | RESET"));
+					".rates ([XP,XP52,ADENA,DROP,LAW,KARMA,WEIGHT,ALL] VALUE) | RESET"));
 			pc.sendPackets(new S_SystemMessage("XP: " + (int) Config.RATE_XP));
+			pc.sendPackets(new S_SystemMessage("XP52: " + (int) Config.RATE_XP52));
 			pc.sendPackets(new S_SystemMessage("ADENA: "
 					+ (int) Config.RATE_DROP_ADENA));
 			pc.sendPackets(new S_SystemMessage("DROP: "

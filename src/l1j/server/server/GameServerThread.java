@@ -99,6 +99,7 @@ public class GameServerThread {
 
 	public GameServerThread() throws Exception {
 		double rateXp = Config.RATE_XP;
+		double rateXp52 = Config.RATE_XP52;
 		double LA = Config.RATE_LA;
 		double rateKarma = Config.RATE_KARMA;
 		double rateDropItems = Config.RATE_DROP_ITEMS;
@@ -138,6 +139,7 @@ public class GameServerThread {
 		_log.info("PetExp RATE                = "
 				+ (Config.PETEXP_RATE));
 		_log.info("XP RATE                    = " + rateXp);
+		_log.info("XP RATE (until lvl 52)     = " + rateXp52);
 		_log.info("Lawful RATE                = " + LA);
 		_log.info("Karma RATE                 = " + rateKarma);
 		_log.info("Drop RATE                  = " + rateDropItems);
