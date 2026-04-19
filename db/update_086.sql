@@ -172,3 +172,13 @@ INSERT INTO `spawnlist_npc` (`location`, `count`, `npc_templateid`, `locx`, `loc
 
 -- fix npc-eliza dialog 
 INSERT INTO `npcaction` VALUES ('70622', 'eliza1', '', '', '');
+
+-- fix beleth entrance and exit room
+INSERT INTO `dungeon` VALUES ('32768', '32749', '24', 'Windawood Castle Dungeon 2F', '32768', '32751', '24', 'Windawood Castle Dungeon 2F', '4');
+INSERT INTO `dungeon` VALUES ('32769', '32749', '24', 'Windawood Castle Dungeon 2F', '32769', '32751', '24', 'Windawood Castle Dungeon 2F', '4');
+INSERT INTO `dungeon` VALUES ('32768', '32786', '24', 'Windawood Castle Dungeon 2F', '32768', '32784', '24', 'Windawood Castle Dungeon 2F', '0');
+INSERT INTO `dungeon` VALUES ('32769', '32786', '24', 'Windawood Castle Dungeon 2F', '32769', '32784', '24', 'Windawood Castle Dungeon 2F', '0');
+INSERT INTO `dungeon` VALUES ('32751', '32768', '24', 'Windawood Castle Dungeon 2F', '32749', '32768', '24', 'Windawood Castle Dungeon 2F', '6');
+INSERT INTO `dungeon` VALUES ('32751', '32769', '24', 'Windawood Castle Dungeon 2F', '32749', '32769', '24', 'Windawood Castle Dungeon 2F', '6');
+INSERT INTO `dungeon` VALUES ('32784', '32768', '24', 'Windawood Castle Dungeon 2F', '32786', '32768', '24', 'Windawood Castle Dungeon 2F', '2');
+INSERT INTO `dungeon` VALUES ('32784', '32769', '24', 'Windawood Castle Dungeon 2F', '32786', '32769', '24', 'Windawood Castle Dungeon 2F', '2');
