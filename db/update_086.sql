@@ -182,3 +182,7 @@ INSERT INTO `dungeon` VALUES ('32751', '32768', '24', 'Windawood Castle Dungeon 
 INSERT INTO `dungeon` VALUES ('32751', '32769', '24', 'Windawood Castle Dungeon 2F', '32749', '32769', '24', 'Windawood Castle Dungeon 2F', '6');
 INSERT INTO `dungeon` VALUES ('32784', '32768', '24', 'Windawood Castle Dungeon 2F', '32786', '32768', '24', 'Windawood Castle Dungeon 2F', '2');
 INSERT INTO `dungeon` VALUES ('32784', '32769', '24', 'Windawood Castle Dungeon 2F', '32786', '32769', '24', 'Windawood Castle Dungeon 2F', '2');
+
+-- add missing getback entries for hidden dock <-> pirate island (client crashes at port arrival if these are missing)
+INSERT INTO `getback` VALUES ('0', '0', '0', '0', '447', '32297', '33087', '32297', '33087', '32297', '33087', '440', '0', '0', '0', '1', 'Ship hidden dock to pirate island');
+INSERT INTO `getback` VALUES ('0', '0', '0', '0', '446', '32750', '32874', '32750', '32874', '32750', '32874', '445', '0', '0', '0', '1', 'Ship pirate island to hidden dock');
