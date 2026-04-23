@@ -303,26 +303,16 @@ public class DropTable {
 									player.sendPackets(new S_ServerMessage(166,
 											"The limit of the itemcount is 2000000000"));
 								} else {
-									if (player.isInParty()) {
-										partyMember = player.getParty()
-												.getMembers();
-										for (int p = 0; p < partyMember.length; p++) {
-											if (partyMember[p]
-													.getPartyDropMessages())
-												partyMember[p]
-														.sendPackets(new S_ServerMessage(
-																813,
-																npc.getName(),
-																item.getLogName(),
-																player.getName()));
-										}
-									} else {
-										if (player.getDropMessages())
-											player.sendPackets(new S_ServerMessage(
-													143, npc.getName(), item
-															.getLogName()));
-									}
+									sendDropMessage(player, player.getName(), npc, item, true);
 								}
+							} else if (acquisitor instanceof L1SummonInstance) {
+								L1SummonInstance summon = (L1SummonInstance) acquisitor;
+								player = (L1PcInstance) summon.getMaster();
+								sendDropMessage(player, "Summon(" + summon.getName() + ")", npc, item, false);
+							} else if (acquisitor instanceof L1PetInstance) {
+								L1PetInstance pet = (L1PetInstance) acquisitor;
+								player = (L1PcInstance) pet.getMaster();
+								sendDropMessage(player, "Pet(" + pet.getName() + ")", npc, item, false);
 							}
 						} else {
 							targetInventory = L1World.getInstance()
@@ -405,5 +395,24 @@ public class DropTable {
 
 	public List<L1Drop> getDrops(int mobID) {// New for GMCommands
 		return _droplists.get(mobID);
+	}
+
+	private void sendDropMessage(L1PcInstance player, String acquirerName, L1NpcInstance npc, L1ItemInstance item, boolean isPlayer) {
+		if (player.isInParty()) {
+			L1PcInstance[] partyMember = player.getParty().getMembers();
+			for (L1PcInstance member : partyMember) {
+				if (member.getPartyDropMessages()) {
+					member.sendPackets(new S_ServerMessage(813, npc.getName(), item.getLogName(), acquirerName));
+				}
+			}
+		} else {
+			if (player.getDropMessages()) {
+				if (isPlayer) {
+					player.sendPackets(new S_ServerMessage(143, npc.getName(), item.getLogName()));
+				} else {
+					player.sendPackets(new S_ServerMessage(813, npc.getName(), item.getLogName(), acquirerName));
+				}
+			}
+		}
 	}
 }
