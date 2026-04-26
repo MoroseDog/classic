@@ -80,6 +80,7 @@ public class L1WeaponSkill {
 	private static final int LightningEdgeChance = 4;
 	private static final int FrozenSpearChance = 5;
 	private static final int WindAxeChance = 4;
+	private static final int ArkMageDiseaseChance = 2;
 	
 	private static final int FettersTime = 8000;
 	// Basically arbitrary, but default to casting procs like a level 48 mage.
@@ -431,15 +432,12 @@ public class L1WeaponSkill {
 				new S_SkillSound(target.getId(), 10)) : 0;
 	}
 
-	// TODO: see if we can pull up info from live - this will basically never
-	// trigger.
 	private static double giveArkMageDiseaseEffect(final L1PcInstance attacker,
 			final L1Character target) {
-		int probability = (5 - ((target.getMr() / 10) * 5)) * 10;
-		if (probability == 0) {
-			probability = 10;
-		}
-		if (probability >= ThreadLocalRandom.current().nextInt(1000) + 1) {
+		L1ItemInstance weapon = attacker.getWeapon();		
+		int enchant = weapon.getEnchantLevel();
+		// Disease 2% base, +1% per enchant over +7
+		if (ArkMageDiseaseChance + Math.max(enchant - 7, 0) >= ThreadLocalRandom.current().nextInt(100) + 1) {
 			L1SkillUse l1skilluse = new L1SkillUse();
 			l1skilluse.handleCommands(attacker, 56, target.getId(),
 					target.getX(), target.getY(), null, 0,
