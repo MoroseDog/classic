@@ -81,9 +81,9 @@ public class L1HauntedHouse {
 		int membersCount = getMembersCount();
 		if (membersCount <= 4) {
 			setWinnersCount(1);
-		} else if (5 >= membersCount && membersCount <= 7) {
+		} else if (membersCount >= 5 && membersCount <= 7) {
 			setWinnersCount(2);
-		} else if (8 >= membersCount && membersCount <= 10) {
+		} else if (membersCount >= 8 && membersCount <= 10) {
 			setWinnersCount(3);
 		}
 		for (L1PcInstance pc : _members) {

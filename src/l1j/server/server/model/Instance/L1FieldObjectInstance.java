@@ -63,9 +63,9 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 			//house.removeMember(pc);
 			L1ItemInstance item = null;
 			if (winnersCount == 3) {
-				if (goalCount == 1) {
+				if (goalCount == 0) {
 					item = ItemTable.getInstance().createItem(49278);
-				} else if (goalCount == 2) {
+				} else if (goalCount == 1) {
 					item = ItemTable.getInstance().createItem(49279);
 				}
 			} else if (winnersCount == 2) {
