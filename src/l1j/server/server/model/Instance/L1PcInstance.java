@@ -249,7 +249,13 @@ public class L1PcInstance extends L1Character {
 				// It has the unintended consequence of not applying death penalties
 				// IE person killed loses Exp, items, etc.
 				// Leaving it as-is for now
+				deathPenalty(); // Ensure death penalty is always applied.
+
 				if (lastAttacker == null) {
+					setGresValid(true);
+					if (getExpRes() == 0) {
+						setExpRes(1);
+					}
 					return;
 				}
 
@@ -390,8 +396,6 @@ public class L1PcInstance extends L1Character {
 						return;
 					}
 				}
-
-				deathPenalty(); //
 
 				setGresValid(true);
 
